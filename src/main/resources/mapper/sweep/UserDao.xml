@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xy.sweep.dao.UserDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.xy.sweep.entity.UserEntity" id="userMap">
+        <result property="id" column="id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="habitation" column="habitation"/>
+        <result property="email" column="email"/>
+        <result property="qq" column="qq"/>
+        <result property="head" column="head"/>
+        <result property="balance" column="balance"/>
+        <result property="footprint" column="footprint"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+
+</mapper>
