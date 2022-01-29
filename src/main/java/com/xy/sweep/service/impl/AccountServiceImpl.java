@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Map;
+import java.util.UUID;
 
 
 @Service("accountService")
@@ -43,14 +44,17 @@ public class AccountServiceImpl extends ServiceImpl<AccountDao, AccountEntity> i
     }
 
     @Override
-    public AccountEntity register(AccountEntity account) {
+    public AccountEntity register(AccountEntity a) {
         if (getOne(new QueryWrapper<AccountEntity>()
-                .eq("account", account.getAccount())) != null) {
+                .eq("account", a.getAccount())) != null) {
             throw new RRException("账号已存在");
         }
+        AccountEntity account = new AccountEntity();
+        account.setAccount(a.getAccount());
+        account.setPassword(a.getPassword());
         UserEntity userEntity = new UserEntity();
+        userEntity.setNickname(UUID.randomUUID().toString().replace("-","").substring(0,8));
         userService.save(userEntity);
-        account.setAccount(null);
         account.setUserId(userEntity.getId());
         save(account);
         userEntity.setAccountId(account.getId());
