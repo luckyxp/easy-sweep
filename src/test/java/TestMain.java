@@ -7,6 +7,7 @@ import org.junit.Test;
 public class TestMain {
     @Test
     public void test1() {
-        System.out.println(Integer.parseInt("0002"));
+//        ArrayList<String> strings = new ArrayList<>();
+//        strings.addAll(null);
     }
 }

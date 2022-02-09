@@ -21,13 +21,31 @@
     </resultMap>
 
     <select id="newCreate" resultType="com.xy.sweep.entity.HallEntity">
-        SELECT id, title,create_time
-        FROM hall where status = 1
+        SELECT id, title, create_time
+        FROM hall
+        where status = 1 where deleted = 1
         order by create_time desc limit 10
     </select>
     <select id="rank" parameterType="java.lang.String" resultType="com.xy.sweep.entity.HallEntity">
-        SELECT id, title,${key}
-        FROM hall where status = 1
+        SELECT id, title, ${key}
+        FROM hall
+        where status = 1 where deleted = 1
         order by ${key} desc limit 10
+    </select>
+    <select id="selectByUserName" parameterType="java.lang.String" resultType="com.xy.sweep.entity.HallEntity">
+        SELECT *
+        from hall
+        WHERE id in (
+            SELECT hall_id
+            from user_hall
+            where user_id in (
+                SELECT id
+                from `user`
+                where nickname like concat('%',#{key},'%')
+                  and deleted = 1
+            )
+              and deleted = 1
+        )
+          and deleted = 1
     </select>
 </mapper>

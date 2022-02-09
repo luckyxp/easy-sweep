@@ -31,5 +31,7 @@ public interface HallService extends IService<HallEntity> {
     void updateInfoById(HallUpdate hallUpdate);
 
     void deleteById(Long id);
+
+    PageUtils search(Map<String, Object> params);
 }
 

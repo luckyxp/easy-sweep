@@ -41,6 +41,18 @@ public class HallController {
         return R.ok().put("page", page);
     }
 
+    /**
+     * 搜索纪念馆
+     */
+    @ApiOperation("搜索")
+    @GetMapping("/search")
+    public R search(@RequestParam(required = false) Map<String, Object> params){
+        PageUtils page = hallService.search(params);
+        if (page == null) {
+            return R.ok("没有结果");
+        }
+        return R.ok().put("page", page);
+    }
 
     /**
      * 信息

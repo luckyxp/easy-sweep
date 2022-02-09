@@ -19,4 +19,6 @@ public interface HallDao extends BaseMapper<HallEntity> {
     List<HallEntity> newCreate();
 
     List<HallEntity> rank(String key);
+
+    List<HallEntity> selectByUserName(String key);
 }
