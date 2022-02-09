@@ -3,7 +3,7 @@
 
 <mapper namespace="com.xy.sweep.dao.HallDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.xy.sweep.entity.HallEntity" id="hallMap">
         <result property="id" column="id"/>
         <result property="identifier" column="identifier"/>
@@ -20,5 +20,14 @@
         <result property="deleted" column="deleted"/>
     </resultMap>
 
-
+    <select id="newCreate" resultType="com.xy.sweep.entity.HallEntity">
+        SELECT id, title,create_time
+        FROM hall where status = 1
+        order by create_time desc limit 10
+    </select>
+    <select id="rank" parameterType="java.lang.String" resultType="com.xy.sweep.entity.HallEntity">
+        SELECT id, title,${key}
+        FROM hall where status = 1
+        order by ${key} desc limit 10
+    </select>
 </mapper>

@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 
 /**
  * @author climb.xu
@@ -20,6 +21,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(authenticationInterceptor);
-        registration.addPathPatterns("/sweep/user/**");
+        registration.addPathPatterns(Arrays.asList("/sweep/user/**","/sweep/hall/createHall"));
     }
 }

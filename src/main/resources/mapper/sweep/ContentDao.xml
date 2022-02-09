@@ -8,6 +8,7 @@
         <result property="id" column="id"/>
         <result property="deceasedId" column="deceased_id"/>
         <result property="title" column="title"/>
+        <result property="userId" column="user_id"/>
         <result property="content" column="content"/>
         <result property="type" column="type"/>
         <result property="createTime" column="create_time"/>

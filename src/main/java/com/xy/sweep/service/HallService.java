@@ -3,7 +3,10 @@ package com.xy.sweep.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xy.sweep.common.utils.PageUtils;
 import com.xy.sweep.entity.HallEntity;
+import com.xy.sweep.entity.dto.HallAudit;
+import com.xy.sweep.entity.dto.HallUpdate;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +19,17 @@ import java.util.Map;
 public interface HallService extends IService<HallEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<HallEntity> newCreate();
+
+    List<HallEntity> rank(String key);
+
+    void createHall(HallEntity hall);
+
+    void audit(HallAudit hallAudit);
+
+    void updateInfoById(HallUpdate hallUpdate);
+
+    void deleteById(Long id);
 }
 

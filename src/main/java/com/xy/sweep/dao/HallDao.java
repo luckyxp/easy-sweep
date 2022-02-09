@@ -1,8 +1,10 @@
 package com.xy.sweep.dao;
 
-import com.xy.sweep.entity.HallEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xy.sweep.entity.HallEntity;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * 纪念馆表
@@ -13,5 +15,8 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface HallDao extends BaseMapper<HallEntity> {
-	
+
+    List<HallEntity> newCreate();
+
+    List<HallEntity> rank(String key);
 }

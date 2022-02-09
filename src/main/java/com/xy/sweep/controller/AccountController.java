@@ -110,5 +110,4 @@ public class AccountController {
         return R.ok().put("data", accountEntity);
     }
 
-
 }

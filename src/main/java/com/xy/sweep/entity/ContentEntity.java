@@ -39,6 +39,11 @@ public class ContentEntity implements Serializable {
     @ApiModelProperty("标题")
     private String title;
     /**
+     * 内容发布者
+     */
+    @ApiModelProperty("内容发布者")
+    private Long userId;
+    /**
      * 内容
      */
     @ApiModelProperty("内容")

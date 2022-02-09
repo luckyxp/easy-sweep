@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Map;
 
 
@@ -50,16 +49,6 @@ public class DeceasedController {
         return R.ok().put("deceased", deceased);
     }
 
-    /**
-     * 保存
-     */
-    @ApiOperation("保存")
-    @PostMapping("/save")
-    public R save(@RequestBody DeceasedEntity deceased) {
-        deceasedService.save(deceased);
-
-        return R.ok();
-    }
 
     /**
      * 修改
@@ -72,15 +61,5 @@ public class DeceasedController {
         return R.ok();
     }
 
-    /**
-     * 删除
-     */
-    @ApiOperation("删除")
-    @DeleteMapping("/delete")
-    public R delete(@RequestBody Long[] ids) {
-        deceasedService.removeByIds(Arrays.asList(ids));
-
-        return R.ok();
-    }
 
 }
