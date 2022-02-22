@@ -180,4 +180,13 @@ public class HallServiceImpl extends ServiceImpl<HallDao, HallEntity> implements
         return new PageUtils(page, result.size(), limit, curPage);
     }
 
+    @Override
+    public List<HallEntity> myHall(Integer type) {
+        if (type == null) {
+            type = 0;
+        }
+        UserDTO user = tokenUtil.getUserJson(UserDTO.class);
+        return baseMapper.myHall(user.getUser().getId(), type);
+    }
+
 }

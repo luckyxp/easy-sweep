@@ -110,4 +110,12 @@ public class HallController {
         hallService.deleteById(id);
         return R.ok();
     }
+
+    @ApiOperation("我的相关纪念馆(type 0创建,1关注,2亲友")
+    @GetMapping("/myHall")
+    public R myHall(@RequestParam(required = false) Integer type) {
+        List<HallEntity> hallEntities = hallService.myHall(type);
+        return R.ok().put("data", hallEntities);
+    }
+
 }

@@ -33,5 +33,7 @@ public interface HallService extends IService<HallEntity> {
     void deleteById(Long id);
 
     PageUtils search(Map<String, Object> params);
+
+    List<HallEntity> myHall(Integer type);
 }
 

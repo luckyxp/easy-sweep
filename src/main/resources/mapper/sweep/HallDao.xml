@@ -41,11 +41,22 @@
             where user_id in (
                 SELECT id
                 from `user`
-                where nickname like concat('%',#{key},'%')
+                where nickname like concat('%', #{key}, '%')
                   and deleted = 1
             )
               and deleted = 1
         )
+          and deleted = 1
+    </select>
+    <select id="myHall" parameterType="java.lang.Integer" resultType="com.xy.sweep.entity.HallEntity">
+        select *
+        from hall
+        where id in (
+            SELECT hall_id
+            FROM user_hall
+            WHERE user_id = ${userId}
+              and `type` = ${type}
+              and deleted = 1)
           and deleted = 1
     </select>
 </mapper>
