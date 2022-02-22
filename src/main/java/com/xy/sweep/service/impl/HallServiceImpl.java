@@ -189,4 +189,7 @@ public class HallServiceImpl extends ServiceImpl<HallDao, HallEntity> implements
         return baseMapper.myHall(user.getUser().getId(), type);
     }
 
+    public Long getDeceasedIdByHallId(Long hallId) {
+        return this.baseMapper.getDeceasedIdByHallId(hallId);
+    }
 }

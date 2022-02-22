@@ -35,5 +35,7 @@ public interface HallService extends IService<HallEntity> {
     PageUtils search(Map<String, Object> params);
 
     List<HallEntity> myHall(Integer type);
+
+    Long getDeceasedIdByHallId(Long hallId);
 }
 

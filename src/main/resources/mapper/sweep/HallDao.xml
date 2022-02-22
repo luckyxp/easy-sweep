@@ -59,4 +59,10 @@
               and deleted = 1)
           and deleted = 1
     </select>
+    <select id="getDeceasedIdByHallId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select deceased_id
+        from hall
+        where id = ${hallId}
+          and deleted = 1
+    </select>
 </mapper>

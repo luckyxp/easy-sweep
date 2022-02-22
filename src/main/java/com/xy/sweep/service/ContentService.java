@@ -3,7 +3,9 @@ package com.xy.sweep.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xy.sweep.common.utils.PageUtils;
 import com.xy.sweep.entity.ContentEntity;
+import com.xy.sweep.entity.dto.ContentPubDTO;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,11 @@ import java.util.Map;
 public interface ContentService extends IService<ContentEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<ContentEntity> listByHallId(Long hallId);
+
+    List<ContentEntity> myContent();
+
+    ContentEntity publish(ContentPubDTO dto);
 }
 

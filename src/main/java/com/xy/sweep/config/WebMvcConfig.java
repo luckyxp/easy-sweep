@@ -21,6 +21,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(authenticationInterceptor);
-        registration.addPathPatterns(Arrays.asList("/sweep/user/**","/sweep/hall/createHall","/sweep/hall/myHall"));
+        registration.addPathPatterns(Arrays.asList("/sweep/user/**", "/sweep/hall/createHall", "/sweep/hall/myHall", "/sweep/content/myContent", "/sweep/content/pubContent"));
     }
 }

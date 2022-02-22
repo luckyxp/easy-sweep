@@ -8,12 +8,12 @@ import com.xy.sweep.entity.dto.HallUpdate;
 import com.xy.sweep.service.HallService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-
 
 
 /**
@@ -30,23 +30,9 @@ public class HallController {
     @Autowired
     private HallService hallService;
 
-    /**
-     * 列表
-     */
-    @ApiOperation("列表")
-    @GetMapping("/list")
-    public R list(@RequestParam(required = false) Map<String, Object> params){
-        PageUtils page = hallService.queryPage(params);
-
-        return R.ok().put("page", page);
-    }
-
-    /**
-     * 搜索纪念馆
-     */
     @ApiOperation("搜索")
     @GetMapping("/search")
-    public R search(@RequestParam(required = false) Map<String, Object> params){
+    public R search(@ApiParam("传分页参数(page,limit)和key(关键字)") @RequestParam(required = false) Map<String, Object> params) {
         PageUtils page = hallService.search(params);
         if (page == null) {
             return R.ok("没有结果");
@@ -54,33 +40,25 @@ public class HallController {
         return R.ok().put("page", page);
     }
 
-    /**
-     * 信息
-     */
     @ApiOperation("信息")
     @GetMapping("/info/{id}")
-    public R info(@PathVariable("id") Long id){
-		HallEntity hall = hallService.getById(id);
+    public R info(@PathVariable("id") Long id) {
+        HallEntity hall = hallService.getById(id);
 
         return R.ok().put("hall", hall);
     }
 
-    /**
-     * 保存
-     */
     @ApiOperation("建馆")
     @PostMapping("/createHall")
-    public R createHall(@RequestBody HallEntity hall){
-		hallService.createHall(hall);
+    public R createHall(@RequestBody HallEntity hall) {
+        hallService.createHall(hall);
         return R.ok();
     }
-    /**
-     * 修改
-     */
+
     @ApiOperation("根据id修改信息")
     @PutMapping("/updateInfoById")
-    public R updateInfoById(@RequestBody HallUpdate hallUpdate){
-		hallService.updateInfoById(hallUpdate);
+    public R updateInfoById(@RequestBody HallUpdate hallUpdate) {
+        hallService.updateInfoById(hallUpdate);
         return R.ok();
     }
 
@@ -91,9 +69,10 @@ public class HallController {
         List<HallEntity> newCreate = hallService.newCreate();
         return R.ok().put("data", newCreate);
     }
+
     @ApiOperation("审核")
     @PostMapping("/audit")
-    public R audit(@RequestBody HallAudit hallAudit){
+    public R audit(@RequestBody HallAudit hallAudit) {
         hallService.audit(hallAudit);
         return R.ok();
     }
@@ -104,6 +83,7 @@ public class HallController {
         List<HallEntity> rank = hallService.rank(key);
         return R.ok().put("data", rank);
     }
+
     @ApiOperation("删馆")
     @GetMapping("/remove/{id}")
     public R deleteById(@PathVariable("id") Long id) {

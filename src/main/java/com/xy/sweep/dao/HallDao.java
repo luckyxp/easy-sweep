@@ -24,4 +24,6 @@ public interface HallDao extends BaseMapper<HallEntity> {
     List<HallEntity> selectByUserName(String key);
 
     List<HallEntity> myHall(@Param("userId") Long userId, @Param("type") Integer type);
+
+    Long getDeceasedIdByHallId(Long hallId);
 }
