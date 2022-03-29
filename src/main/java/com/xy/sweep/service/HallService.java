@@ -24,7 +24,7 @@ public interface HallService extends IService<HallEntity> {
 
     List<HallEntity> rank(String key);
 
-    void createHall(HallEntity hall);
+    HallEntity createHall(HallEntity hall);
 
     void audit(HallAudit hallAudit);
 

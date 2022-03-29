@@ -51,8 +51,8 @@ public class HallController {
     @ApiOperation("建馆")
     @PostMapping("/createHall")
     public R createHall(@RequestBody HallEntity hall) {
-        hallService.createHall(hall);
-        return R.ok();
+        HallEntity r = hallService.createHall(hall);
+        return R.ok().put("data",r);
     }
 
     @ApiOperation("根据id修改信息")

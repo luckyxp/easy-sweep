@@ -7,7 +7,6 @@ import org.junit.Test;
 public class TestMain {
     @Test
     public void test1() {
-//        ArrayList<String> strings = new ArrayList<>();
-//        strings.addAll(null);
+//        System.out.println(UUID.randomUUID().toString().substring(26));
     }
 }

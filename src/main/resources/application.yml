@@ -5,7 +5,7 @@ spring:
     name: easy-sweep
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://8.134.123.165:4406/easy-sweep?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.94.41.119:4406/easy-sweep?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: XpxproOt2008
   jackson:
@@ -13,8 +13,24 @@ spring:
     time-zone: GMT+8
     serialization.write-dates-as-timestamps: false
   redis:
-    host: 8.134.123.165
+    host: 47.94.41.119
     password: XpxproOt2008
+  #配置邮箱
+  mail:
+    host: smtp.qq.com
+    port: 465
+    protocol: smtp
+    username: 2271613696@qq.com
+    nickname: easy-sweep
+    password: wcbwrmvfumvmecbb
+    default-encoding:  UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true #调试模式
+    test-connection: false #启动项目时验证是否可以正确通信 默认为false
 mybatis-plus:
   mapper-locations: classpath*:/mapper/sweep/*.xml
   typeAliasesPackage: com.xy.sweep.entity
@@ -26,3 +42,10 @@ mybatis-plus:
       id-type: auto
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+
+aliyun:
+  oss:
+    endpoint: oss-cn-guangzhou.aliyuncs.com
+    accessKeyId: LTAI5tD9XCmJPcJPRTo6615R
+    accessKeySecret: iGzS0ViWoCv4vAH2itQumtBzrUyS3B
+    bucketName: xy-sweep

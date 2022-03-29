@@ -58,7 +58,7 @@ public class HallServiceImpl extends ServiceImpl<HallDao, HallEntity> implements
     }
 
     @Override
-    public void createHall(HallEntity hall) {
+    public HallEntity createHall(HallEntity hall) {
         hall.setId(null);
         hall.setCreateTime(null);
         hall.setUpdateTime(null);
@@ -80,6 +80,7 @@ public class HallServiceImpl extends ServiceImpl<HallDao, HallEntity> implements
         userHallEntity.setType(0);
         userHallEntity.setUserId(tokenUtil.getUserJson(UserDTO.class).getUser().getId());
         userHallService.save(userHallEntity);
+        return hall;
     }
 
     @Override

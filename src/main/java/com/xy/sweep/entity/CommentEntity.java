@@ -6,60 +6,46 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 内容表
+ * 评论表
  *
  * @author climb.xu
- * @email 2271613696@qq.com
- * @date 2021-11-30 12:20:50
+ * @date 2022/2/22 19:09
  */
 @Data
-@TableName("content")
-@ApiModel("内容表")
-public class ContentEntity implements Serializable {
+@TableName("comment")
+@ApiModel("评论表")
+public class CommentEntity {
     private static final long serialVersionUID = 1L;
 
     /**
-     * id
+     * 评论id
      */
     @TableId
-    @ApiModelProperty("id")
-    private Long id;
+    @ApiModelProperty("评论id")
+    private Long commentId;
     /**
-     * 逝者id
+     * 文章id
      */
-    @ApiModelProperty("逝者id")
-    private Long deceasedId;
-    /**
-     * 标题
-     */
-    @ApiModelProperty("标题")
-    private String title;
-    /**
-     * 内容发布者
-     */
-    @ApiModelProperty("内容发布者")
-    private Long userId;
+    @ApiModelProperty("文章id")
+    private Long contentId;
     /**
      * 内容
      */
     @ApiModelProperty("内容")
     private String content;
-
     /**
-     * 状态(0审核中,1已通过,2不通过)
+     * 用户id
      */
-    @ApiModelProperty("状态(0审核中,1已通过,2不通过)")
-    private Integer status;
-
+    @ApiModelProperty("用户id")
+    private Long userId;
     /**
-     * 分类(0时空信箱,1追忆文章,2一生大事,3生平简介)
+     * 父评论id
      */
-    @ApiModelProperty("分类(0时空信箱,1追忆文章,2一生大事,3生平简介)")
-    private Integer type;
+    @ApiModelProperty("父评论id")
+    private Long parentId;
     /**
      * 创建时间
      */
@@ -75,5 +61,4 @@ public class ContentEntity implements Serializable {
      */
     @ApiModelProperty("逻辑删除 0(逻辑已删除) 1(逻辑未删除)")
     private Integer deleted;
-
 }

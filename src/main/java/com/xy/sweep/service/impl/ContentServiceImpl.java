@@ -61,6 +61,7 @@ public class ContentServiceImpl extends ServiceImpl<ContentDao, ContentEntity> i
         UserDTO user = tokenUtil.getUserJson(UserDTO.class);
         contentEntity.setUserId(user.getUser().getId());
         BeanUtils.copyProperties(dto, contentEntity);
+        contentEntity.setStatus(0);
         this.save(contentEntity);
         return contentEntity;
     }
